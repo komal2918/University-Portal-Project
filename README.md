@@ -6,7 +6,6 @@ Landing pages for universities with lead forms and APIs.
 
 - Frontend: React + JavaScript + CSS
 - Backend: Express.js (Node.js)
-- No TypeScript, No Tailwind - Just basics
 
 ## Project Structure
 
@@ -87,6 +86,4 @@ Update backend URL in `frontend/src/config.js` after deployment.
 - Backend runs on port 5000, frontend on port 3000
 - CORS enabled for local development
 - Config file handles API URLs for dev/prod
-
-Built for internship assessment in ~10 hours.
 
