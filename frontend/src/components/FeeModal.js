@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config';
 import './FeeModal.css';
 
 function FeeModal({ onClose }) {
@@ -12,7 +13,7 @@ function FeeModal({ onClose }) {
 
   const fetchFees = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/fees');
+      const response = await axios.get(`${config.API_URL}/fees`);
       setFees(response.data.data);
     } catch (error) {
       console.error('Error fetching fees:', error);

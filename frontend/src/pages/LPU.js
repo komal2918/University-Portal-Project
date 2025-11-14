@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config';
 import LeadForm from '../components/LeadForm';
 import FeeModal from '../components/FeeModal';
 import './University.css';
@@ -16,11 +17,10 @@ function LPU() {
 
   const fetchData = async () => {
     try {
-      const API_URL = 'http://localhost:5000/api';
       const [coursesRes, facilitiesRes, placementsRes] = await Promise.all([
-        axios.get(`${API_URL}/courses`),
-        axios.get(`${API_URL}/facilities`),
-        axios.get(`${API_URL}/placement-stats`)
+        axios.get(`${config.API_URL}/courses`),
+        axios.get(`${config.API_URL}/facilities`),
+        axios.get(`${config.API_URL}/placement-stats`)
       ]);
       setCourses(coursesRes.data.data);
       setFacilities(facilitiesRes.data.data);
