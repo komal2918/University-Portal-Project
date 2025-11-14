@@ -4,7 +4,13 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS configuration for production
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Courses API
@@ -82,6 +88,11 @@ app.get('/api/placement-stats', (req, res) => {
     topRecruiters: ['Microsoft', 'Google', 'Amazon', 'TCS', 'Infosys', 'Wipro']
   };
   res.json({ success: true, data: stats });
+});
+
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'University Portal API', status: 'running' });
 });
 
 app.listen(PORT, () => {
